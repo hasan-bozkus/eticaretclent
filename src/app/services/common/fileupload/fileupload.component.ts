@@ -7,6 +7,8 @@ import { AlertifyService, MessageType, Position } from '../../admin/alertify.ser
 import { CustomToastrService, ToastrMessageType, ToastrPosition } from '../../ui/custom-toastr.service';
 import { DialogService } from '../dialog.service';
 import { HttpClientService } from '../http-client.service';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { SpinnerType } from '../../../base/base.component';
 
 @Component({
   selector: 'app-fileupload',
@@ -19,12 +21,15 @@ export class FileuploadComponent {
     private alertifyService: AlertifyService,
     private customToastrService: CustomToastrService,
     private dialog: MatDialog,
-    private dialogService: DialogService) {
+    private dialogService: DialogService,
+    private spinner: NgxSpinnerService) {
 
   }
 
   public files: NgxFileDropEntry[];
-@Input() options: Partial<FileUploadOptions>;
+
+  @Input() options: Partial<FileUploadOptions>;
+
   public selectedFiles(files: NgxFileDropEntry[]) {
     this.files = files;
     const fileData: FormData = new FormData();
@@ -35,10 +40,10 @@ export class FileuploadComponent {
     }
 
     this.dialogService.openDialog({
-
       componentType: FileUploadDialogComponent,
-      data: FileUploadDialogState,
+      data: FileUploadDialogState.Yes,
       afterClosed: () => {
+        this.spinner.show(SpinnerType.Cog);
         this.httpClientService.post({
           controller: this.options.controller,
           action: this.options.actions,
@@ -47,6 +52,8 @@ export class FileuploadComponent {
         }, fileData).subscribe(data => {
 
           const message: string = "Dosyalar başarıyla yüklenmiştir.";
+
+          this.spinner.hide(SpinnerType.Cog);
 
           if (this.options.İsAdminPage) {
             this.alertifyService.message(message, {
@@ -61,11 +68,12 @@ export class FileuploadComponent {
               position: ToastrPosition.TopRight
             });
           }
+          
 
         }, (errorResponse: HttpErrorResponse) => {
 
           const message: string = "Dosyalar yüklenirken beklenmedik bir hata ile karşılaşıldı.";
-
+          this.spinner.hide(SpinnerType.Cog);
           if (this.options.İsAdminPage) {
             this.alertifyService.message(message, {
               dismissOthers: true,

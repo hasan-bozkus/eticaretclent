@@ -3,11 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\directives",
-    "\\src\\app\\directives\\admin",
+    "\\src\\app\\admin",
+    "\\src\\app\\admin\\components",
+    "\\src\\app\\admin\\components\\products",
+    "\\src\\app\\dialogs",
     "\\src\\app\\services",
-    "\\src\\app\\services\\common"
+    "\\src\\app\\services\\common",
+    "\\src\\app\\services\\common\\fileupload"
   ],
-  "SelectedNode": "\\src\\app\\app.module.ts",
+  "SelectedNode": "\\src\\app\\services\\common\\fileupload\\fileupload.component.ts",
   "PreviewInSolutionExplorer": false
 }
