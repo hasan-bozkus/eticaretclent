@@ -1,6 +1,7 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, Input, Output } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BaseDialog } from '../base/base-dialog';
+import { FileUploadOptions } from '../../services/common/fileupload/fileupload.component';
 
 @Component({
   selector: 'app-file-upload-dialog',
@@ -19,6 +20,6 @@ export class FileUploadDialogComponent extends BaseDialog<FileUploadDialogCompon
 }
 
 export enum FileUploadDialogState {
-  Yes,
-  No
+Yes,
+No
 }
