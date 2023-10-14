@@ -1,15 +1,15 @@
 {
   "ExpandedNodes": [
     "",
-    "\\src",
     "\\src\\app",
     "\\src\\app\\admin",
     "\\src\\app\\admin\\components",
-    "\\src\\app\\admin\\components\\products",
     "\\src\\app\\dialogs",
+    "\\src\\app\\dialogs\\base",
+    "\\src\\app\\dialogs\\delete-dialog",
     "\\src\\app\\services",
-    "\\src\\app\\services\\common",
-    "\\src\\app\\services\\common\\fileupload"
+    "\\src\\assets"
   ],
+  "SelectedNode": "\\src",
   "PreviewInSolutionExplorer": false
 }
