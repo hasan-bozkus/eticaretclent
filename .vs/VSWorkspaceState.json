@@ -1,15 +1,16 @@
 {
   "ExpandedNodes": [
     "",
+    "\\src",
     "\\src\\app",
     "\\src\\app\\admin",
-    "\\src\\app\\admin\\components",
-    "\\src\\app\\dialogs",
+    "\\src\\app\\contracts",
     "\\src\\app\\dialogs\\base",
-    "\\src\\app\\dialogs\\delete-dialog",
     "\\src\\app\\services",
+    "\\src\\app\\services\\common",
+    "\\src\\app\\services\\common\\models",
     "\\src\\assets"
   ],
-  "SelectedNode": "\\src",
+  "SelectedNode": "\\src\\app\\contracts\\list_product_image.ts",
   "PreviewInSolutionExplorer": false
 }
