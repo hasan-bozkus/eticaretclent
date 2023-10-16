@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <form [formGroup]="frm" (ngSubmit)="onSubmit(frm.value)">
+
+      <div class="mb-3">
+        <label for="adSoyad" class="form-label">Ad Soyad *</label>
+        <input type="text" formControlName="adSoyad" class="form-control" id="adSoyad" placeholder="Ad Soyad" [ngClass]="{'is-invalid': component.adSoyad.errors}">
+        <div class="form-text invalid-feedback" style="color:red;" *ngIf="submitted && component.adSoyad.errors?.required">Lüfen Adınız ve Soyadınızı giriniz.</div>
+        <div class="form-text" style="color:red;" *ngIf="submitted && (component.adSoyad.errors?.minlength || component.adSoyad.errors?.maxlength)">Lüfen En Az 10 ve En Fazla 50 Karakter giriniz.</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="kullanıcıadi" class="form-label">Kullanıcı Adı *</label>
+        <input type="text" formControlName="kullaniciadi" class="form-control" id="kullanıcıadi" placeholder="Kullanıcı Adı" [ngClass]="{'is-invalid': component.kullaniciadi.errors}">
+        <div class="form-text invalid-feedback" style="color:red;" *ngIf="submitted && component.kullaniciadi.errors?.required">Lüfen Kullanıcı adınızı giriniz.</div>
+      </div>
+      
+      <div class="mb-3">
+        <label for="email" class="form-label">Email *</label>
+        <input type="email" formControlName="email" class="form-control" id="email" placeholder="E-Posta" [ngClass]="{'is-invalid': component.email.errors}">
+        <div class="form-text invalid-feedback" style="color:red;" *ngIf="submitted && component.email.errors?.required">Lüfen E-Postanızı giriniz.</div>
+        <div class="form-text invalid-feedback" style="color:red;" *ngIf="submitted && component.email.errors?.email">Lüfen E-Postanızı "@" uygun formatta giriniz.</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="sifre" class="form-label">Şifre *</label>
+        <input type="password" formControlName="sifre" class="form-control" id="password" placeholder="Şifre" [ngClass]="{'is-invalid': component.sifre.errors}">
+        <div class="form-text invalid-feedback" style="color:red;" *ngIf="submitted && component.sifre.errors?.required">Lüfen Şifrenizi giriniz.</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="passwordchecked" class="form-label">Şifre Tekrarı *</label>
+        <input type="password" formControlName="sifreTekrari" class="form-control" id="passwordchecked" placeholder="Şifre Tekrarı" [ngClass]="{'is-invalid': component.sifreTekrari.errors}">
+        <div class="form-text" style="color:red;" *ngIf="submitted && frm.hasError('notSame')">Lüfen Şifreyi doğrulayınız..</div>
+      </div>
+
+      <br />
+
+      <button type="submit" class="btn btn-primary">Kayıt Ol</button>
+
+    </form>
+
+  </div>
+  <div class="col-md-3"></div>
+</div>
