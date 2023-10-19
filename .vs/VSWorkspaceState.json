@@ -3,8 +3,10 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\contracts",
-    "\\src\\app\\contracts\\users"
+    "\\src\\app\\uı",
+    "\\src\\app\\uı\\components\\login",
+    "\\src\\app\\uı\\components\\register"
   ],
+  "SelectedNode": "\\src\\app\\app.component.spec.ts",
   "PreviewInSolutionExplorer": false
 }
