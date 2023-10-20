@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { CustomToastrService, ToastrMessageType, ToastrPosition } from './services/ui/custom-toastr.service';
+import { AuthService } from './services/common/auth.service';
+import { Router } from '@angular/router';
 declare var $: any
 
 @Component({
@@ -9,14 +11,20 @@ declare var $: any
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'eticaretclent';
-  // constructor(private toastrService: CustomToastrService){
-  //   toastrService.message("SelamünAleyküm", "Hasan", {messageType: ToastrMessageType.Info, position: ToastrPosition.TopRight});
-  //   toastrService.message("SelamünAleyküm", "Hasan", {messageType: ToastrMessageType.Success, position: ToastrPosition.TopRight});
-  //   toastrService.message("SelamünAleyküm", "Hasan", {messageType: ToastrMessageType.Error, position: ToastrPosition.TopRight});
-  //   toastrService.message("SelamünAleyküm", "Hasan", {messageType: ToastrMessageType.Warning, position: ToastrPosition.TopRight});
-  // }
-  constructor(){}
+  constructor(public authService: AuthService, private toastrService: CustomToastrService,
+    private router: Router) {
+    authService.identityCheck();
+  }
+
+  signOut() {
+    localStorage.removeItem("accessToken");
+    this.authService.identityCheck();
+    this.router.navigate([""]);
+    this.toastrService.message("Oturum Çıkış Yapıldı...", "Oturum Kapatıldı", {
+      messageType: ToastrMessageType.Warning,
+      position: ToastrPosition.TopRight
+    });
+  }
   
 }
 
