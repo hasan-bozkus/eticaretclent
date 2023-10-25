@@ -11,7 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FileUploadDialogComponent } from './dialogs/file-upload-dialog/file-upload-dialog.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { LoginComponent } from './uı/components/login/login.component';
-import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule, GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
+import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule, GoogleSigninButtonModule, FacebookLoginProvider } from '@abacritt/angularx-social-login';
 
 
 @NgModule({
@@ -48,6 +48,10 @@ import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule, Google
           {
             id: GoogleLoginProvider.PROVIDER_ID,
             provider: new GoogleLoginProvider("250190513022-43p533gku8ec6h7j94ceqga7q4msbtce.apps.googleusercontent.com")
+          },
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider("1197747131140550")
           }
         ],
         onError: err => console.log(err)

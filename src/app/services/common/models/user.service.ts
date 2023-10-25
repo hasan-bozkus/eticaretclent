@@ -64,4 +64,23 @@ export class UserService {
     callBackFunction();
   }
 
+  async facebookLogin(user: SocialUser, callBackFunction?: () => void): Promise<any> {
+    const observable: Observable<SocialUser | Token_Response> =  this.httpCilentService.post<SocialUser | Token_Response>({
+      controller: "users",
+      action: "facebooklogin"
+    }, user);
+
+    const tokenResponse: Token_Response = await firstValueFrom(observable) as Token_Response;
+
+    if (tokenResponse) {
+      localStorage.setItem("accessToken", tokenResponse.token.accessToken);
+      this.toastrService.message("Facebook ile giriş sağlanmıştır.", "Outurum Açıldı", {
+        messageType: ToastrMessageType.Success,
+        position: ToastrPosition.TopRight
+      });
+    }
+
+    callBackFunction();
+  }
+
 }
