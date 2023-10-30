@@ -7,5 +7,6 @@
     "\\src\\app\\services\\common",
     "\\src\\app\\services\\common\\models"
   ],
+  "SelectedNode": "\\src\\app\\services\\common\\models\\user-auth.service.ts",
   "PreviewInSolutionExplorer": false
 }
