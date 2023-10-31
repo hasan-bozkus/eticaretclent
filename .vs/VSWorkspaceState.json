@@ -4,9 +4,7 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\services",
-    "\\src\\app\\services\\common",
-    "\\src\\app\\services\\common\\models"
+    "\\src\\app\\services\\common"
   ],
-  "SelectedNode": "\\src\\app\\services\\common\\models\\user-auth.service.ts",
   "PreviewInSolutionExplorer": false
 }
