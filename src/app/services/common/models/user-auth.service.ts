@@ -4,6 +4,7 @@ import { CustomToastrService, ToastrMessageType, ToastrPosition } from '../../ui
 import { Token_Response } from '../../../contracts/token/token_response';
 import { Observable, firstValueFrom } from 'rxjs';
 import { SocialUser } from '@abacritt/angularx-social-login';
+import { Token } from '../../../contracts/token/token';
 
 @Injectable({
   providedIn: 'root'
@@ -22,14 +23,33 @@ export class UserAuthService {
 
     const tokenResponse: Token_Response = await firstValueFrom(observable) as Token_Response;
 
-    if (tokenResponse)
-      localStorage.setItem("accessToken", tokenResponse.token.accessToken);
+    if (tokenResponse) { 
+    localStorage.setItem("accessToken", tokenResponse.token.accessToken);
+    localStorage.setItem("refreshToken", tokenResponse.token.refreshToken);
 
     this.toastrService.message("Kullanıcı girişi başarılı...", "Giriş Başarılı", {
       messageType: ToastrMessageType.Success,
       position: ToastrPosition.TopRight
     });
+    } callBackFunction();
+    
+  };
 
+  async refreshTokenLogin(refreshToken: string, callBackFunction?: () => void) : Promise<any> {
+    const observable: Observable<any | Token_Response> = this.httpCilentService.post({
+      action: "refreshtokenlogin",
+      controller: "auth"
+    }, {
+      refreshToken: refreshToken
+    });
+
+    const tokenResponse: Token_Response = await firstValueFrom(observable) as Token_Response;
+
+    if (tokenResponse) {
+      localStorage.setItem("accessToken", tokenResponse.token.accessToken);
+      localStorage.setItem("refreshToken", tokenResponse.token.refreshToken);
+
+    }
     callBackFunction();
   };
 
@@ -43,6 +63,7 @@ export class UserAuthService {
 
     if (tokenResponse)
       localStorage.setItem("accessToken", tokenResponse.token.accessToken);
+      localStorage.setItem("refreshToken", tokenResponse.token.refreshToken);
 
     this.toastrService.message("Google ile giriş sağlanmıştır.", "Oturum Açıldı", {
       messageType: ToastrMessageType.Success,
@@ -62,6 +83,8 @@ export class UserAuthService {
 
     if (tokenResponse) {
       localStorage.setItem("accessToken", tokenResponse.token.accessToken);
+      localStorage.setItem("refreshToken", tokenResponse.token.refreshToken);
+
       this.toastrService.message("Facebook ile giriş sağlanmıştır.", "Outurum Açıldı", {
         messageType: ToastrMessageType.Success,
         position: ToastrPosition.TopRight
