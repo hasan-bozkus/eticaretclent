@@ -24,8 +24,6 @@ export class HttpErrorHandlerInterceptorService implements HttpInterceptor {
             position: ToastrPosition.BottomFullWidth
           });
 
-          console.log("abc");
-
           this.userAuthService.refreshTokenLogin(localStorage.getItem("refreshToken")).then(data => {
 
           });
