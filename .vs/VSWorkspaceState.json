@@ -3,11 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\services",
-    "\\src\\app\\services\\common",
-    "\\src\\app\\uı\\components",
-    "\\src\\app\\uı\\components\\login"
+    "\\src\\app\\admin",
+    "\\src\\app\\admin\\components",
+    "\\src\\app\\admin\\components\\products",
+    "\\src\\app\\admin\\components\\products\\list",
+    "\\src\\app\\u\u0131\\components",
+    "\\src\\app\\u\u0131\\components\\products",
+    "\\src\\app\\u\u0131\\components\\products\\list"
   ],
-  "SelectedNode": "\\src\\app\\services\\common\\signalr.service.ts",
+  "SelectedNode": "\\src\\app\\admin\\components\\products\\list\\list.component.html",
   "PreviewInSolutionExplorer": false
 }
