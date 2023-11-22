@@ -3,14 +3,8 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\admin",
-    "\\src\\app\\admin\\components",
-    "\\src\\app\\admin\\components\\products",
-    "\\src\\app\\admin\\components\\products\\list",
-    "\\src\\app\\u\u0131\\components",
-    "\\src\\app\\u\u0131\\components\\products",
-    "\\src\\app\\u\u0131\\components\\products\\list"
+    "\\src\\app\\services"
   ],
-  "SelectedNode": "\\src\\app\\admin\\components\\products\\list\\list.component.html",
+  "SelectedNode": "\\src\\app\\app.module.ts",
   "PreviewInSolutionExplorer": false
 }
