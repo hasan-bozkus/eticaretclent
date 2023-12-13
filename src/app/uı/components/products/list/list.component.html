@@ -1,13 +1,14 @@
 <div class="row">
 
-  <div class="card" style="width: 15rem; float: left; margin: 5px" *ngFor="let product of products;">
+  <div class="card" style="width: 15rem; float: left; margin: 5px"
+       *ngFor="let product of products;">
     <img src="../../../../assets/default-product.png" class="card-img-top" alt="..." />
     <div class="card-body">
-      <h5 class="card-title">{{product.Name}}</h5>
+      <h5 class="card-title">{{product.name}}</h5>
       <p class="card-text">
-        Fiyat: {{product.Price | currency: '₺'}}
+        Fiyat: {{product.price | currency: '₺'}}
         <br />
-        Stok: {{product.Stock}}
+        Stok: {{product.stock}}
       </p>
       <a href="#" class="btn btn-success">Sepete Ekle</a>
     </div>
@@ -20,9 +21,18 @@
   <div class="col-md-6">
     <nav aria-label="Page navigation example">
       <ul class="pagination">
-        <li class="page-item"><a class="page-link" [routerLink] ="['/products', currentPageno - 1 <= 0 ? 1: currentPageNo - 1]">Önceki</a></li>
-        <li class="page-item" *ngFor="let pageNo of pageList;" routerLinkActive="active"><a class="page-link" href="#" [routerLink]="['/products', pageNo]">{{pageNo}}</a></li>
-        <li class="page-item"><a class="page-link" [routerLink] ="['/products', currentPageno + 1 >= totalPageCount ? totalPageCount: currentPageNo + 1]">Sonraki</a></li>
+        <li class="page-item">
+        <a class="page-link">{{currentPageNo}}/{{totalPageCount}}</a>
+        </li>
+        <li class="page-item">
+        <a class="page-link" [routerLink] ="['/products', currentPageNo - 1 <= 0 ? 1: currentPageNo - 1]">Önceki</a>
+        </li>
+        <li class="page-item" *ngFor="let pageNo of pageList;" routerLinkActive="active">
+
+        <a class="page-link" href="#" [routerLink]="['/products', pageNo]">{{pageNo}}</a>
+
+        </li>
+        <li class="page-item"><a class="page-link" [routerLink] ="['/products', currentPageNo + 1 >= totalPageCount ? totalPageCount: currentPageNo + 1]">Sonraki</a></li>
       </ul>
     </nav>
   </div>

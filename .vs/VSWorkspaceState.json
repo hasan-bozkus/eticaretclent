@@ -3,8 +3,11 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\services"
+    "\\src\\app\\u\u0131",
+    "\\src\\app\\u\u0131\\components",
+    "\\src\\app\\u\u0131\\components\\products",
+    "\\src\\app\\u\u0131\\components\\products\\list"
   ],
-  "SelectedNode": "\\src\\app\\app.module.ts",
+  "SelectedNode": "\\.angular",
   "PreviewInSolutionExplorer": false
 }

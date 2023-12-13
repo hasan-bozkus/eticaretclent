@@ -61,7 +61,10 @@ export class SelectProductImageDialogComponent extends BaseDialog<SelectProductI
 
     });
 
-    
+  }
+
+  showCase(imageId: string) {
+    alert("image ıd : " + imageId + "- proudct Id : " + this.data);
   }
 
 }
