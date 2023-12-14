@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../../../services/common/models/product.service';
 import { List_Product } from '../../../../contracts/list_product';
 import { ActivatedRoute } from '@angular/router';
+import { FileService } from '../../../../services/common/models/file.service';
 
 @Component({
   selector: 'app-list',
@@ -10,7 +11,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ListComponent implements OnInit {
 
-  constructor(private productService: ProductService, private activatedRoute: ActivatedRoute) {
+  constructor(private productService: ProductService, private activatedRoute: ActivatedRoute,
+    private fileService: FileService) {
 
   }
 
@@ -34,6 +36,21 @@ export class ListComponent implements OnInit {
       });
 
       this.products = data.products;
+
+      this.products = this.products.map<List_Product>(p => {
+        const listProduct: List_Product = {
+          id: p.id,
+          createDate: p.createDate,
+          imagePath: p.productImageFiles.length ? p.productImageFiles.find(p => p.showcase).path : "",
+          name: p.name,
+          price: p.price,
+          stock: p.stock,
+          updateDate: p.updateDate,
+          productImageFiles: p.productImageFiles
+        };
+        return listProduct;
+      });
+
       this.totalProductCount = data.totalProductCount;
       this.totalPageCount = Math.ceil(this.totalProductCount / this.pageSize);
 

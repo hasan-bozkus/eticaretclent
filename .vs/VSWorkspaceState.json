@@ -3,11 +3,11 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\u\u0131",
-    "\\src\\app\\u\u0131\\components",
-    "\\src\\app\\u\u0131\\components\\products",
-    "\\src\\app\\u\u0131\\components\\products\\list"
+    "\\src\\app\\contracts",
+    "\\src\\app\\services",
+    "\\src\\app\\services\\common",
+    "\\src\\app\\services\\common\\models"
   ],
-  "SelectedNode": "\\.angular",
+  "SelectedNode": "\\src\\app\\contracts\\base_url.ts",
   "PreviewInSolutionExplorer": false
 }
