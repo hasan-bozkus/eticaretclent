@@ -11,10 +11,10 @@ export class FileService {
   constructor(private httpClientService: HttpClientService) { }
 
   async getBaseStorageUrl(): Promise<BaseUrl> {
-    const observable: Observable<BaseUrl> = this.httpClientService.get <BaseUrl>({
+    const getObservable: Observable<BaseUrl> = this.httpClientService.get <BaseUrl>({
       controller: "files",
       action: "GetBaseStorageUrl"
     });
-    return await firstValueFrom(observable);
+    return await firstValueFrom(getObservable);
   }
 }

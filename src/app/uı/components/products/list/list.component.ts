@@ -3,6 +3,7 @@ import { ProductService } from '../../../../services/common/models/product.servi
 import { List_Product } from '../../../../contracts/list_product';
 import { ActivatedRoute } from '@angular/router';
 import { FileService } from '../../../../services/common/models/file.service';
+import { BaseUrl } from '../../../../contracts/base_url';
 
 @Component({
   selector: 'app-list',
@@ -21,9 +22,12 @@ export class ListComponent implements OnInit {
   totalPageCount: number;
   pageSize: number = 12;
   pageList: number[] = [];
+  baseUrl: BaseUrl;
 
   products: List_Product[];
-  ngOnInit() {
+ async ngOnInit() {
+    this.baseUrl = await this.fileService.getBaseStorageUrl();
+
     this.activatedRoute.params.subscribe(async params => {
 
       this.currentPageNo = parseInt(params["pageNo"] ?? 1);
