@@ -35,7 +35,7 @@ export class UserAuthService {
     
   };
 
-  async refreshTokenLogin(refreshToken: string, callBackFunction?: () => void) : Promise<any> {
+  async refreshTokenLogin(refreshToken: string, callBackFunction?: (state) => void) : Promise<any> {
     const observable: Observable<any | Token_Response> = this.httpCilentService.post({
       action: "refreshtokenlogin",
       controller: "auth"
@@ -43,14 +43,19 @@ export class UserAuthService {
       refreshToken: refreshToken
     });
 
-    const tokenResponse: Token_Response = await firstValueFrom(observable) as Token_Response;
+    try {
+      const tokenResponse: Token_Response = await firstValueFrom(observable) as Token_Response;
 
-    if (tokenResponse) {
-      localStorage.setItem("accessToken", tokenResponse.token.accessToken);
-      localStorage.setItem("refreshToken", tokenResponse.token.refreshToken);
+      if (tokenResponse) {
+        localStorage.setItem("accessToken", tokenResponse.token.accessToken);
+        localStorage.setItem("refreshToken", tokenResponse.token.refreshToken);
 
+      }
+      callBackFunction(tokenResponse ? true : false);
     }
-    callBackFunction();
+    catch {
+      callBackFunction(false);
+    }
   };
 
   async googleLogin(user: SocialUser, callBackFunction?: () => void): Promise<any> {
